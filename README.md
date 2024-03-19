@@ -7,13 +7,13 @@ The bot uses MultiModal abilities of LLMs to capture the screen and than reasons
 ## Running
 
 1. `pip install -r requirements.txt`
-2. Put you openAI API key in the relevant line in the code
+2. Put your openAI API key in the relevant line in the code
 3. Run the code
 
 ## Future Plans
 
 - [ ] Add support for Anthropic Claude3
-- [ ] Add support for open source MultiModal LLMs (LLava, Baqllava, etc)
+- [ ] Add support for open-source MultiModal LLMs (LLava, Baqllava, etc)
 - [ ] Improve chat history
 
 ## Contibutions
