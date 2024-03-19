@@ -16,6 +16,7 @@ The bot uses MultiModal abilities of LLMs to capture the screen and than reasons
 - [ ] Add support for open-source MultiModal LLMs (LLava, Baqllava, etc)
 - [ ] Improve chat history
 - [ ] Add the ability to upload technical guides to help the bot give better answers
+- [ ] Add a caching mechanism based of VectorDB to reduce cost and improve latency
 
 ## Contibutions
 
