@@ -3,7 +3,6 @@ from tkinter import scrolledtext
 import pyautogui
 import base64
 import requests
-from openai import OpenAI
 import io
 
 # OpenAI API Key
@@ -19,7 +18,10 @@ def submit_text():
     user_input = input_box.get("1.0", "end-1c")
     conversation_history.append({"role": "user", "content": [{"type": 'text', "text": user_input}]})
     output_box.configure(state='normal')
-    output_box.insert(tk.END, "User: " + user_input + "\n")
+    output_box.insert(tk.END, "User: ", 'bold')  # Make 'User' label bold
+    output_box.insert(tk.END, user_input + "\n")
+    output_box.insert(tk.END, "\n")  # Add a line space
+
 
     screenshot = pyautogui.screenshot()
     screenshot_bytes = io.BytesIO()
@@ -35,7 +37,9 @@ def submit_text():
 
     # Call a function to process the user input and get a response
     # response = process_input(user_input)
-    output_box.insert(tk.END, "Assistant: " + response + "\n")
+    output_box.insert(tk.END, "Assistant: ", 'bold')  # Make 'Assistant' label bold
+    output_box.insert(tk.END, response + "\n")
+    output_box.insert(tk.END, "\n")  # Add a line space
     output_box.see(tk.END)  # Scroll to the end of the output box
 
     output_box.configure(state='disabled')
@@ -94,7 +98,9 @@ def next_text():
     screenshot_base64 = base64.b64encode(screenshot_bytes.getvalue()).decode('utf-8')
 
     response = call_chat_with_image(screenshot_base64, prompt)
-    output_box.insert(tk.END, "Assistant: " + response + "\n")
+    output_box.insert(tk.END, "Assistant: ", 'bold')  # Make 'Assistant' label bold
+    output_box.insert(tk.END, response + "\n")
+    output_box.insert(tk.END, "\n")  # Add a line space
     output_box.see(tk.END)  # Scroll to the end of the output box
 
     output_box.configure(state='disabled')
@@ -112,6 +118,7 @@ window.attributes('-topmost', True)  # Make the window always stay on top
 # Create the output box
 output_box = scrolledtext.ScrolledText(window, height=20, width=50, state='disabled', wrap="word")
 output_box.pack()
+output_box.tag_configure('bold', font=('Arial', 10, 'bold'))
 
 # Create the input box
 input_box = tk.Text(window, height=2, width=50, wrap="word")
