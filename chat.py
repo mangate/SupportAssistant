@@ -29,10 +29,10 @@ def submit_text():
     screenshot_base64 = base64.b64encode(screenshot_bytes.getvalue()).decode('utf-8')
 
 
-    prompt = """You are a techinal support assitant in charge of helping the user perfrom some action,
-            Attached is the screen shot of the user screen and a request from the user. Guide the user on what to do next, keep your
-            answer short and precise as possible, in case you don't know what to do write 'i dont know'. Notice that the screenshot contains the chat
-            widget where the user communicates with use titiled "chat widget", please ignore this ==== \n user request:""" + user_input
+    prompt = """You are a technical support assistant in charge of helping the user perform some action.
+            Attached is the screenshot of the user screen and a request from the user. Guide the user on what to do next. Keep your
+            answer short and precise as possible. In case you don't know what to do, write "I don't know". Notice that the screenshot contains the chat
+            widget where the user communicates with user (titled "chat widget") - please ignore it. ==== \n user request:""" + user_input
     response = call_chat_with_image(screenshot_base64, prompt)
 
     # Call a function to process the user input and get a response
